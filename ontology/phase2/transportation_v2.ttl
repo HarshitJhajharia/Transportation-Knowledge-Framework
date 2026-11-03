@@ -1,0 +1,371 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tran: <http://example.org/transportation.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/transportation.owl> a owl:Ontology .
+
+tran:Ambulance_2 a tran:Ambulance,
+        owl:NamedIndividual .
+
+tran:Blocks a owl:ObjectProperty ;
+    rdfs:domain tran:Incident ;
+    rdfs:range tran:Road .
+
+tran:Car_1 a tran:Car,
+        owl:NamedIndividual .
+
+tran:Causes a owl:ObjectProperty ;
+    rdfs:domain tran:Incident ;
+    rdfs:range tran:Congestion .
+
+tran:EmergencyVehicle_1 a tran:EmergencyVehicle,
+        owl:NamedIndividual .
+
+tran:Influences a owl:ObjectProperty ;
+    rdfs:domain tran:Congestion ;
+    rdfs:range tran:Route .
+
+tran:LocatedAt a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tran:Vehicle tran:Incident tran:Signal ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( tran:Road tran:Junction ) ] .
+
+tran:Prioritizes a owl:ObjectProperty ;
+    rdfs:domain tran:Signal ;
+    rdfs:range tran:EmergencyVehicle .
+
+tran:Road_A_B a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_A,
+        tran:Junction_B ;
+    tran:connects tran:Junction_A,
+        tran:Junction_B ;
+    tran:distance 4.0 ;
+    tran:lanes 2 ;
+    tran:length 4.0 ;
+    tran:roadName "Road A-B"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_A_C a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_A,
+        tran:Junction_C ;
+    tran:connects tran:Junction_A,
+        tran:Junction_C ;
+    tran:distance 3.0 ;
+    tran:lanes 2 ;
+    tran:length 3.0 ;
+    tran:roadName "Road A-C"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_B_D a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_B,
+        tran:Junction_D ;
+    tran:connects tran:Junction_B,
+        tran:Junction_D ;
+    tran:distance 5.0 ;
+    tran:lanes 2 ;
+    tran:length 5.0 ;
+    tran:roadName "Road B-D"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_B_E a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_B,
+        tran:Junction_E ;
+    tran:connects tran:Junction_B,
+        tran:Junction_E ;
+    tran:distance 2.0 ;
+    tran:lanes 2 ;
+    tran:length 2.0 ;
+    tran:roadName "Road B-E"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_C_E a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_C,
+        tran:Junction_E ;
+    tran:connects tran:Junction_C,
+        tran:Junction_E ;
+    tran:distance 4.0 ;
+    tran:lanes 2 ;
+    tran:length 4.0 ;
+    tran:roadName "Road C-E"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_D_F a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_D,
+        tran:Junction_F ;
+    tran:connects tran:Junction_D,
+        tran:Junction_F ;
+    tran:distance 3.0 ;
+    tran:lanes 2 ;
+    tran:length 3.0 ;
+    tran:roadName "Road D-F"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Road_F_G a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_F,
+        tran:Junction_G ;
+    tran:connects tran:Junction_F,
+        tran:Junction_G ;
+    tran:distance 2.0 ;
+    tran:lanes 2 ;
+    tran:length 2.0 ;
+    tran:roadName "Road F-G"^^xsd:string ;
+    tran:speedLimit 60 ;
+    tran:status "Open"^^xsd:string .
+
+tran:Signal_B a tran:Signal,
+        owl:NamedIndividual ;
+    tran:LocatedAt tran:Junction_B ;
+    tran:Prioritizes tran:Ambulance_1 ;
+    tran:controls tran:Junction_B ;
+    tran:signalPhase "Emergency Priority"^^xsd:string ;
+    tran:signalState "Green"^^xsd:string .
+
+tran:Vehicle_100 a tran:EmergencyVehicle,
+        tran:Vehicle,
+        owl:NamedIndividual ;
+    tran:hasRole "Emergency"^^xsd:string .
+
+tran:avgSpeed a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Congestion ;
+    rdfs:range xsd:decimal .
+
+tran:congestionLevel a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Congestion ;
+    rdfs:range xsd:string .
+
+tran:connects a owl:ObjectProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range tran:Junction .
+
+tran:controls a owl:ObjectProperty ;
+    rdfs:domain tran:Signal ;
+    rdfs:range tran:Junction .
+
+tran:distance a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:decimal .
+
+tran:hasIncident a owl:ObjectProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range tran:Incident .
+
+tran:incidentType a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Incident ;
+    rdfs:range xsd:string .
+
+tran:junctionId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Junction ;
+    rdfs:range xsd:string .
+
+tran:lanes a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:integer .
+
+tran:length a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:decimal .
+
+tran:locatedAt a owl:ObjectProperty ;
+    rdfs:domain tran:Vehicle ;
+    rdfs:range tran:Junction .
+
+tran:roadName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:string .
+
+tran:routeDistance a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Route ;
+    rdfs:range xsd:decimal .
+
+tran:routeId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Route ;
+    rdfs:range xsd:string .
+
+tran:severity a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Incident ;
+    rdfs:range xsd:integer .
+
+tran:signalPhase a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Signal ;
+    rdfs:range xsd:string .
+
+tran:signalState a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Signal ;
+    rdfs:range xsd:string .
+
+tran:speedLimit a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:integer .
+
+tran:startTime a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Incident ;
+    rdfs:range xsd:string .
+
+tran:status a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range xsd:string .
+
+tran:vehicleId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Vehicle ;
+    rdfs:range xsd:string .
+
+tran:vehicleType a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Vehicle ;
+    rdfs:range xsd:string .
+
+tran:Accident_1 a tran:Incident,
+        owl:NamedIndividual ;
+    tran:Blocks tran:Road_C_G ;
+    tran:Causes tran:Congestion_1 ;
+    tran:incidentType "Accident"^^xsd:string ;
+    tran:severity 3 ;
+    tran:startTime "2026-10-27T10:30:00"^^xsd:string .
+
+tran:Ambulance_1 a tran:Ambulance,
+        tran:Vehicle,
+        owl:NamedIndividual ;
+    tran:LocatedAt tran:Junction_A ;
+    tran:locatedAt tran:Junction_A ;
+    tran:vehicleId "AMB001"^^xsd:string ;
+    tran:vehicleType "Ambulance"^^xsd:string .
+
+tran:Car a owl:Class ;
+    rdfs:subClassOf tran:Vehicle .
+
+tran:Congestion_1 a tran:Congestion,
+        owl:NamedIndividual ;
+    tran:Influences tran:Route_1 ;
+    tran:avgSpeed 15.0 ;
+    tran:congestionLevel "High"^^xsd:string .
+
+tran:ConnectedTo a owl:ObjectProperty ;
+    rdfs:domain tran:Road ;
+    rdfs:range tran:Junction .
+
+tran:Road_C_G a tran:Road,
+        owl:NamedIndividual ;
+    tran:ConnectedTo tran:Junction_C,
+        tran:Junction_G ;
+    tran:connects tran:Junction_C,
+        tran:Junction_G ;
+    tran:distance 6.0 ;
+    tran:hasIncident tran:Accident_1 ;
+    tran:lanes 2 ;
+    tran:length 6.0 ;
+    tran:roadName "Road C-G"^^xsd:string ;
+    tran:speedLimit 50 ;
+    tran:status "Blocked"^^xsd:string .
+
+tran:Route_1 a tran:Route,
+        owl:NamedIndividual ;
+    tran:routeDistance 12.0 ;
+    tran:routeId "R001"^^xsd:string .
+
+tran:hasRole a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain tran:Vehicle ;
+    rdfs:range xsd:string .
+
+tran:Ambulance a owl:Class ;
+    rdfs:subClassOf tran:EmergencyVehicle .
+
+tran:EmergencyVehicle a owl:Class ;
+    rdfs:subClassOf tran:Vehicle ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( tran:Vehicle [ a owl:Restriction ;
+                        owl:hasValue "Emergency"^^xsd:string ;
+                        owl:onProperty tran:hasRole ] ) ] .
+
+tran:Junction_D a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "D"^^xsd:string .
+
+tran:Junction_E a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "E"^^xsd:string .
+
+tran:Junction_F a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "F"^^xsd:string .
+
+tran:Junction_G a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "G"^^xsd:string .
+
+tran:Junction_A a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "A"^^xsd:string .
+
+tran:Junction_C a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "C"^^xsd:string .
+
+tran:Route a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Congestion a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Junction_B a tran:Junction,
+        owl:NamedIndividual ;
+    tran:junctionId "B"^^xsd:string .
+
+tran:Signal a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Incident a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Vehicle a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Junction a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+tran:Road a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:Junction ;
+            owl:onProperty tran:ConnectedTo ],
+        owl:Thing .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( tran:Road tran:Junction tran:Vehicle tran:Signal tran:Route tran:Congestion tran:Incident ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( tran:Road tran:Junction tran:Vehicle tran:Signal tran:Route tran:Congestion tran:Incident ) .
+

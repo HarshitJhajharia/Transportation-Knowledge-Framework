@@ -1,0 +1,4 @@
+id,incidentType,severity,startTime,endTime,roadId,source
+SUMO_Accident_1,Accident,4,2026-11-03T10:02:00,2026-11-03T10:07:00,SUMO_374964887,Simulated
+SUMO_Breakdown_1,Breakdown,2,2026-11-03T10:04:00,2026-11-03T10:09:00,SUMO_532236701,Simulated
+SUMO_Roadwork_1,Roadwork,3,2026-11-03T10:00:00,2026-11-03T10:15:00,SUMO_-170204672#5,Simulated

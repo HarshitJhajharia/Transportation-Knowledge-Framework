@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Notebook cache
+notebooks/cache/
+
+# Neo4j local database
+neo4j/data/
+neo4j/logs/
+
+# Project structure listing
+project_structure.txt
+
+# Local secrets
+*.secret

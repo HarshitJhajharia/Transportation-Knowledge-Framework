@@ -1,0 +1,4 @@
+Dataset (%),Roads,Junctions,Connections,Load Time (ms),Query Time (ms)
+25,198,185,396,411.259,5.795
+50,397,268,794,228.542,11.287
+100,794,276,1588,370.651,9.007

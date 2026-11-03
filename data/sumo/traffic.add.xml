@@ -1,0 +1,7 @@
+<additional>
+    <edgeData
+        id="traffic_measurements"
+        file="../outputs/traffic_edgedata.xml"
+        period="60"
+        excludeEmpty="true"/>
+</additional>

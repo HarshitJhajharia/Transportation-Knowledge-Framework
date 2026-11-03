@@ -1,0 +1,70 @@
+PREFIX tran: <http://example.org/transportation.owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+# Query 1: Which roads are blocked by incidents?
+
+SELECT ?incident ?road
+WHERE {
+    ?incident tran:Blocks ?road .
+}
+
+
+# Query 2: Which incidents cause congestion?
+
+SELECT ?incident ?congestion
+WHERE {
+    ?incident tran:Causes ?congestion .
+}
+
+
+# Query 3: Which routes are influenced by congestion?
+
+SELECT ?congestion ?route
+WHERE {
+    ?congestion tran:Influences ?route .
+}
+
+
+# Query 4: Which signals prioritize emergency vehicles?
+
+SELECT ?signal ?vehicle
+WHERE {
+    ?signal tran:Prioritizes ?vehicle .
+}
+
+
+# Query 5: Which junctions are connected to Road C-G?
+
+SELECT ?junction
+WHERE {
+    tran:Road_C_G tran:ConnectedTo ?junction .
+}
+
+
+# Query 6: Which roads have a speed limit greater than 50 km/h?
+
+SELECT ?road ?speed
+WHERE {
+    ?road tran:speedLimit ?speed .
+    FILTER(?speed > 50)
+}
+
+
+# Query 7: Where is Ambulance_1 located?
+
+SELECT ?vehicle ?location
+WHERE {
+    ?vehicle tran:LocatedAt ?location .
+    FILTER(?vehicle = tran:Ambulance_1)
+}
+
+
+# Query 8: What is the complete incident-to-route explanation chain?
+
+SELECT ?incident ?road ?congestion ?route
+WHERE {
+    ?incident tran:Blocks ?road .
+    ?incident tran:Causes ?congestion .
+    ?congestion tran:Influences ?route .
+}

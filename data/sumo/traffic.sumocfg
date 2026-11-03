@@ -1,0 +1,18 @@
+<configuration>
+
+    <input>
+        <net-file value="selected_area.net.xml"/>
+        <route-files value="traffic.rou.xml"/>
+        <additional-files value="traffic.add.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="900"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="300"/>
+    </processing>
+
+</configuration>

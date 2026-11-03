@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/transportation.owl"
+         xmlns="http://example.org/transportation.owl#">
+
+<owl:Ontology rdf:about="http://example.org/transportation.owl"/>
+
+<owl:ObjectProperty rdf:about="#connects">
+  <rdfs:domain rdf:resource="#Road"/>
+  <rdfs:range rdf:resource="#Junction"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasIncident">
+  <rdfs:domain rdf:resource="#Road"/>
+  <rdfs:range rdf:resource="#Incident"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#locatedAt">
+  <rdfs:domain rdf:resource="#Vehicle"/>
+  <rdfs:range rdf:resource="#Junction"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#controls">
+  <rdfs:domain rdf:resource="#Signal"/>
+  <rdfs:range rdf:resource="#Junction"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#distance">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Road"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#status">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Road"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#vehicleType">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Vehicle"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Junction">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Road">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Vehicle">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Signal">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Incident">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#Junction_A">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_B">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_C">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_D">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_E">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_F">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Junction_G">
+  <rdf:type rdf:resource="#Junction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_A_B">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_A"/>
+  <connects rdf:resource="#Junction_B"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_A_C">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_A"/>
+  <connects rdf:resource="#Junction_C"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_B_D">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_D"/>
+  <connects rdf:resource="#Junction_B"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_B_E">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_E"/>
+  <connects rdf:resource="#Junction_B"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_C_E">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_E"/>
+  <connects rdf:resource="#Junction_C"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_C_G">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_C"/>
+  <connects rdf:resource="#Junction_G"/>
+  <hasIncident rdf:resource="#Accident_1"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blocked</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_D_F">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_D"/>
+  <connects rdf:resource="#Junction_F"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Road_F_G">
+  <rdf:type rdf:resource="#Road"/>
+  <connects rdf:resource="#Junction_F"/>
+  <connects rdf:resource="#Junction_G"/>
+  <distance rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</distance>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ambulance_1">
+  <rdf:type rdf:resource="#Vehicle"/>
+  <locatedAt rdf:resource="#Junction_A"/>
+  <vehicleType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambulance</vehicleType>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Signal_B">
+  <rdf:type rdf:resource="#Signal"/>
+  <controls rdf:resource="#Junction_B"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Accident_1">
+  <rdf:type rdf:resource="#Incident"/>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

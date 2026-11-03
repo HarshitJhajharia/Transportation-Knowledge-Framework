@@ -1,0 +1,7 @@
+Query,Avg Time (ms),Min Time (ms),Max Time (ms)
+All Roads,5.794,5.51,6.137
+Blocked Roads,7.236,6.022,10.467
+High Speed Roads,5.426,5.09,5.932
+Simulated Incidents,4.832,4.522,5.228
+Congested Roads,5.278,4.946,5.69
+Incident Connections,6.115,5.041,8.798

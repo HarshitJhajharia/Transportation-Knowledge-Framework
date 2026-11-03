@@ -1,0 +1,3 @@
+Method,Matched Roads,Avg Time (ms)
+Using Index,753,4.771
+Using Label Scan,753,5.846

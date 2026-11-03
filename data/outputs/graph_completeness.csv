@@ -1,0 +1,5 @@
+Entity,Source Count,Neo4j Count,Completeness (%)
+Roads,794,794,100.0
+Junctions,276,276,100.0
+Incidents,3,3,100.0
+Congestion,75,75,100.0
